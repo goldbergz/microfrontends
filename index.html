@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Микрофронтенды</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  <style>
+        .reveal {
+            font-size: 28px;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .small-text {
+            font-size: 0.7em;
+        }
+        .extra-small {
+            font-size: 0.6em;
+        }
+        table.comparison {
+            font-size: 0.6em;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table.comparison th, table.comparison td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: left;
+        }
+        table.comparison th {
+            background-color: #333;
+        }
+        .solution-card {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-size: 0.8em;
+        }
+        .reveal ul, .reveal ol {
+            margin-left: 20px;
+        }
+        .reveal li {
+            margin-bottom: 0.4em;
+        }
+        .reveal h1 {
+            font-size: 2.2em;
+        }
+        .reveal h2 {
+            font-size: 1.6em;
+        }
+        .reveal h3 {
+            font-size: 1.3em;
+        }
+        .reveal pre {
+            font-size: 0.65em;
+            width: 95%;
+        }
+        .flex {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <!-- Slide 1 -->
+        <section>
+            <img src="assets/slide 1.png" alt="Micro frontends" height="100%">
+        </section>
+
+        <!-- Slide 2 -->
+        <section>
+            <section>
+                <h2>Monolith</h2>
+                <div class="text-left small-text">
+                    <ul>
+                        <li>There is a <code>MainPage</code> with internal routing.</li>
+                        <img src="assets/slide 2_1.png" alt="Main page in monolit">                                              
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+            <div class="text-left small-text">
+              <ul>
+                  <li>We add <code>AboutPage</code> - we have to extend components, storage, libraries.</li>
+                  <img src="assets/slide 2_2.png" alt="About page in monolith">
+              </ul>
+          </div>
+            </section>
+
+            <section>
+                <h3>Advantages of a monolith:</h3>
+                <ul class="small-text">
+                    <li>Ease of implementation</li>
+                    <li>E2E test support</li>
+                    <li>Easy deployment</li>
+                    <li>Single stack/framework</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Minuses of a monolith:</h3>
+                <ul class="small-text">
+                    <li>it becomes so much stuff that it's unclear how to work with it all</li>
+                    <li>when we change one thing in the architecture, we need to change other parts</li>
+                    <li>scaling can be problematic</li>
+                    <li>all the parts are highly dependent on each other</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- Slide 3 -->
+         <section>
+        <section>
+            <h2>What are Microfrontends?</h2>
+            <div class="text-center small-text">
+              <p>Microfrontends are an <strong>architectural pattern</strong> where the frontend is broken down into <strong>independent modules</strong> that:</p>
+              <ul>
+                <li>Are developed by <strong>separate teams</strong></li>
+                <li>Can be <strong>deployed independently</strong></li>
+                <li>Can be written in <strong>different technologies</strong> (React, Vue, Angular)</li>
+              </ul>
+            </div>
+        </section>
+
+        <section>
+          <img src="/assets/slide 3_2.png" alt="Diffrent frameworks in microfrontend">
+        </section>
+      </section>
+
+        <!-- Slide 4 -->
+        <section>
+            <h2>How They Differ from Microservices</h2>
+            <div class="text-left extra-small">
+                <ul>
+                    <li><strong>One DOM.</strong></li>
+                    <li><strong>One Local Storage</strong></li>
+                    <li><strong>One URL.</strong></li>
+                </ul>
+                <img src="/assets/slide 4.png" alt="Microfrontends vs monolith">
+            </div>
+        </section>
+
+        <!-- Slide 5 -->
+         <section>
+        <section>
+            <h2>Why Use Microfrontends?</h2>
+            <div class="text-center small-text">
+              <p>1. Everything is connected. If something breaks, it takes longer to figure out</p>
+              <img src="/assets/slide 5_1.png" height="500px">
+            </div>
+        </section>
+        <section>
+          <div class="text-center small-text">
+            <p>2. One team doesn't have time to do everything</p>
+            <img src="/assets/slide 5_2.jpg" width="600px">
+          </div>
+        </section>
+        <section>
+          <div class="text-center small-text">
+            <p>3. Technology lock-in</p>
+          <img src="/assets/slide 5_3.jpg">
+          </div>
+        </section>
+    </section>
+
+
+        <!-- Slide 6 -->
+        <section>
+          <h2>Microfrontend Benefits</h2>
+          <div class="flex">
+            <div class="small-text">
+                <p>✅ <strong>Development flexibility</strong> - teams choose their own tech</p>
+                <p>✅ <strong>Independent deployment</strong> - update one module without breaking others.</p>
+                <p>✅ <strong>Scalability</strong> - easy to add new features</p>
+                <p>✅ <strong>Gradual migration</strong> - rewrite legacy code piece by piece</p>
+            </div>
+            <img src="/assets/slide 6.png" alt="Microfrontends vs monolit" height="550px">
+          </div>
+        </section>
+
+        <!-- Slide 7 -->
+        <section>
+            <h2>Logic</h2>
+            <div class="text-center small-text">
+              <img src="/assets/slide 7_1.png" alt="Tinkoff exaple" height="550px">
+            </div>
+        </section>
+
+        <!-- Slide 8 -->
+        <section>
+            <section>
+                <h2>How it works?</h2>
+                    <img src="/assets/slide 8.png" alt="Container" height="550px">
+              </section>
+        
+            <section>
+              <h3>1. Client-Side Composition</h3>
+              <div class="text-left small-text">
+                  <ul>
+                      <li>Modules are loaded into the browser and assembled in the runtime</li>
+                      <li><em>Tools:</em> <code>single-spa</code>, <code>Module Federation</code> (Webpack)</li>
+                      <li>Microfrontends combine into single app in the browser</li>
+                  </ul>
+              </div>
+            </section>
+
+            <section>
+              <h3>2. Server-Side Composition</h3>
+              <div class="text-left small-text">
+                  <ul>
+                      <li>Server assembles HTML from different microfrontends</li>
+                      <li><em>Example:</em> Podium</li>
+                      <li>Better initial load performance and SEO</li>
+                  </ul>
+              </div> 
+            </section>
+        </section>
+
+        <!-- Slide 9
+        <section>
+            <section>
+                <h2>Отличие от компонентов</h2>
+                <img src="https://thecode.media/wp-content/uploads/2025/03/image1.png" alt="Сравнение компонентов и микрофронтендов" style="max-height: 250px;">
+                <h3>Компонентный подход</h3>
+                <div class="text-left extra-small">
+                    <ul>
+                        <li>Дробление интерфейса на мелкие части (кнопки, списки, карточки).</li>
+                        <li>Каждый компонент решает одну узкую задачу.</li>
+                        <li><strong>Зависимости:</strong>
+                            <ul>
+                                <li>Общий фреймворк (React/Vue/Angular).</li>
+                                <li>Единый процесс сборки.</li>
+                                <li>Одинаковые версии библиотек.</li>
+                            </ul>
+                        </li>
+                        <li>Подходит для <strong>небольших приложений</strong>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Микрофронтенды</h3>
+                <div class="text-left extra-small">
+                    <ul>
+                        <li>Независимые части интерфейса, работающие как отдельные приложения.</li>
+                        <li>Каждый микрофронтенд <strong>включает компоненты</strong>, но самодостаточен.</li>
+                        <li><strong>Автономность:</strong>
+                            <ul>
+                                <li>Можно использовать разные технологии (React + Angular + Vue).</li>
+                                <li>Отдельный деплой и обновления.</li>
+                                <li>Изолированные зависимости.</li>
+                            </ul>
+                        </li>
+                        <li>Решение для <strong>крупных проектов</strong> и <strong>постепенной миграции</strong>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Итог</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>Критерий</th>
+                        <th>Компоненты</th>
+                        <th>Микрофронтенды</th>
+                    </tr>
+                    <tr>
+                        <td>Масштаб</td>
+                        <td>Мелкие элементы UI</td>
+                        <td>Целые разделы приложения</td>
+                    </tr>
+                    <tr>
+                        <td>Технологии</td>
+                        <td>Один фреймворк</td>
+                        <td>Любые фреймворки</td>
+                    </tr>
+                    <tr>
+                        <td>Сборка</td>
+                        <td>Единая</td>
+                        <td>Независимая</td>
+                    </tr>
+                    <tr>
+                        <td>Назначение</td>
+                        <td>Организация кода</td>
+                        <td>Масштабируемость команд</td>
+                    </tr>
+                </table>
+            </section>
+        </section> -->
+
+        <!-- Slide 10 -->
+        <section>
+            <section>
+                <h2>Challenges and Solutions</h2>
+                <img src="/assets/slide 10_1.jpg">
+            </section>
+            <section>
+                <h3>1. Duplicate dependencies and increasing the size of the bundles</h3>
+                <img src="/assets/slide 10_2.jpg" height="500px">
+            </section>
+            <section>
+                <div class="solution-card">
+                  <p><strong>Challenge:</strong> Each microfrontend may include its own library versions, increasing total size.</p>
+                  <p><strong>Solutions:</strong></p>
+                  <ul>
+                      <li>Use <strong>Module Federation</strong> for shared dependencies</li>
+                  </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>2. Integration and isolation difficulties</h3>
+                <div class="solution-card">
+                  <p><strong>Challenge:</strong> Different micro frontends can conflict over global styles, variables or events.</p>
+                  <p><strong>Solutions:</strong></p>
+                  <ul>
+                      <li>Use CSS modules or CSS-in-JS for style scoping</li>
+                      <li>Standardize naming conventions</li>
+                  </ul>                </div>
+            </section>
+
+            <section>
+                <h3>3. Testing and Debugging Complexity</h3>
+                <img src="/assets/slide 10_3.jpg">
+            </section>
+            <section>
+                <div class="solution-card">
+                  <p><strong>Challenge:</strong> Testing and debugging become more complex due to distributed architecture.
+                  </p>
+                  <p><strong>Solutions:</strong></p>
+                  <ul>
+                      <li>Implement unit and integration tests per microfrontend</li>
+                  </ul>                </div>
+            </section>
+
+            <section>
+              <h3>4. DevOps and CI/CD Complexity</h3>
+              <div class="solution-card">
+                  <p><strong>Challenge:</strong> And managing the deployment and upgrades of multiple microfrontends requires additional effort.
+                  </p>
+              </div>
+                        </section>
+        </section>
+
+        <!-- Slide 11 -->
+        <section>
+          <h2>When NOT to Use Microfrontends</h2>
+          <h3>Not a Silver Bullet!</h3>
+          <div class="text-left small-text">
+              <p>🚫 <strong>Small projects</strong> (overhead not justified)</p>
+              <p>🚫 <strong>Single team</strong> (monolith may suffice)</p>
+              <p>🚫 <strong>Strict performance requirements</strong> (extra module loading)</p>
+              <p>💡 <em>Alternative:</em> <strong>Modular monolithic frontend</strong></p>
+          </div>
+        </section>
+
+        <!-- Slide 12 -->
+        <section>
+            <h2>Thank You!</h2>
+            <img src="/assets/slide 12.jpg">
+          </section>
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+  // More info about initialization & config:
+  // - https://revealjs.com/initialization/
+  // - https://revealjs.com/config/
+  Reveal.initialize({
+    hash: true,
+    transition: 'convex',
+    backgroundTransition: 'slide',
+
+    // Learn about plugins: https://revealjs.com/plugins/
+    plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+  });
+</script>
+</body>
+</html>
